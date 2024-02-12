@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class Categoria {
     public String nombre;
 
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
     public List<Pelicula> peliculas;
 }
