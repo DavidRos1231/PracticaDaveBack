@@ -25,4 +25,5 @@ public class CategoriaController {
     public ResponseEntity<CustomResponse<List<Categoria>>> getAll(){
         return new ResponseEntity<>(categoriaService.findAll(), HttpStatus.OK);
     }
+
 }

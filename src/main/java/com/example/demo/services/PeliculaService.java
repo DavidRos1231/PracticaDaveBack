@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.models.Categoria;
 import com.example.demo.models.CustomResponse;
 import com.example.demo.models.Pelicula;
 import com.example.demo.models.PeliculaRepository;
@@ -79,5 +80,34 @@ public class PeliculaService {
             );
         }
 
+    }
+
+    public CustomResponse<List<Pelicula>> getBetween(String fecha1, String fecha2) {
+        return new CustomResponse<>(
+                peliculaRepository.getBetween(fecha1,fecha2),
+                200,
+                false,
+                "Ok"
+
+        );
+    }
+    public CustomResponse<List<Pelicula>> searchByTitleAndDirectorLike(String titulo, String director) {
+        return new CustomResponse<>(
+                peliculaRepository.searchByTitleAndDirectorLike(titulo,director),
+                200,
+                false,
+                "Ok"
+
+        );
+    }
+
+    public CustomResponse<List<Pelicula>> searchByCategoria(long categoria) {
+        return new CustomResponse<>(
+                peliculaRepository.findAllByCategoria(new Categoria(categoria)),
+                200,
+                false,
+                "Ok"
+
+        );
     }
 }

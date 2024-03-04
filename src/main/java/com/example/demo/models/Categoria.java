@@ -26,4 +26,8 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria")
     @JsonIgnore
     public List<Pelicula> peliculas;
+
+    public Categoria(long categoria) {
+        this.id = categoria;
+    }
 }

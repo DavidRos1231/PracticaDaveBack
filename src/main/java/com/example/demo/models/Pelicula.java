@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Date;
+
 @Entity
 @Table(name = "pelicula")
 @NoArgsConstructor
@@ -32,6 +34,9 @@ public class Pelicula {
 
     @Column(name = "duracion",length = 5,nullable = false)
     public String duracion;
+
+    @Column(name = "fecha",nullable = false)
+    public Date fecha;
 
     @Column(name = "enlace",length = 255,nullable = true)
     public String enlace;

@@ -25,6 +25,21 @@ public class PeliculaController {
     public ResponseEntity<CustomResponse<List<Pelicula>>> getAll(){
         return new ResponseEntity<>(peliculaService.findAll(), HttpStatus.OK);
     }
+    @GetMapping("/getWithFilter/{titulo}/{director}")
+    public ResponseEntity<CustomResponse<List<Pelicula>>> getWithFilter(@PathVariable String titulo, @PathVariable String director){
+        titulo=titulo.equals("0")?"":titulo;
+        director=director.equals("0")?"":director;
+        return new ResponseEntity<>(peliculaService.searchByTitleAndDirectorLike(titulo,director), HttpStatus.OK);
+    }
+    @GetMapping("/getWithCategoria/{categoria}")
+    public ResponseEntity<CustomResponse<List<Pelicula>>> getWithCategoria(@PathVariable long categoria){
+        return new ResponseEntity<>(peliculaService.searchByCategoria(categoria), HttpStatus.OK);
+    }
+    @GetMapping("/getBetween/{fecha1}/{fecha2}")
+    public ResponseEntity<CustomResponse<List<Pelicula>>> getBetween(@PathVariable String fecha1, @PathVariable String fecha2){
+        return new ResponseEntity<>(peliculaService.getBetween(fecha1,fecha2), HttpStatus.OK);
+    }
+
     @PutMapping("/update")
     public ResponseEntity<CustomResponse<Pelicula>> update(@RequestBody Pelicula pelicula){
         return new ResponseEntity<>(peliculaService.update(pelicula), HttpStatus.OK);
